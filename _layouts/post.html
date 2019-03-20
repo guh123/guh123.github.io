@@ -1,26 +1,37 @@
 ---
-layout: page
+layout: default
 ---
 
-<div class="post">
-  <!-- Wrapper Start -->
-  <section id="intro" style="border: 1px dotted #ddd;">
-    <div class="container">
-      <div class="row">
-        <div>
-          <div class="block">
-            <h1>{{ page.title }}</h1>
-            <div class="post-info-wrapper">
-              <p class="italic">By <span class="bold">{{ page.author }}</span> on <span class="bold">{{ page.date | date: "%B %-d, %Y" }}</span></p>
-            </div>
-            <hr />
-            <p>{{ content }}</p>
-          </div>
-        </div><!-- .col-md-7 close -->
-      </div>
-    </div>
-  </section>
+<header class="post-header">
+	<div>
+		<span>Posted on </span><span class="post-meta">{{ page.date | date: "%B %-d, %Y" }}</span>
+	</div>
+
+	<h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="entry-content" itemprop="articleBody">
+		{{ content }}
+	</div>
+</article>
+
+<div id="post-nav">
+	<div class="next">
+		{% if page.next.url %}
+		<a href="{{ site.baseurl }}{{ page.next.url }}">
+			<span>Next entry</span>
+			{{ page.next.title }}
+		</a>
+		{% endif %}
+	</div>
+
+	<div class="previous">
+		{% if page.previous.url %}
+		<a href="{{ site.baseurl }}{{ page.previous.url }}">
+			<span>Previous entry</span>
+			{{ page.previous.title }}
+		</a>
+		{% endif %}
+	</div>
 </div>
-<p class="center-text" style="padding: 30px;">
-  <a href="{{ site.baseurl }}/blog">Back to blog</a>
-</p>

@@ -1,40 +1,29 @@
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#943526">
 
-<!-- CSS -->
-<link rel="stylesheet" href="{{ site.baseurl }}/css/owl.carousel.css" />
-<link rel="stylesheet" href="{{ site.baseurl }}/css/bootstrap.min.css" />
-<link rel="stylesheet" href="{{ site.baseurl }}/css/font-awesome.min.css" />
-<link rel="stylesheet" href="{{ site.baseurl }}/css/airspace.css" />
-<link rel="stylesheet" href="{{ site.baseurl }}/css/style.css" />
-<link rel="stylesheet" href="{{ site.baseurl }}/css/ionicons.min.css" />
-<link rel="stylesheet" href="{{ site.baseurl }}/css/animate.css" />
-<link rel="stylesheet" href="{{ site.baseurl }}/css/responsive.css" />
-<link rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css" />
+	{% if page.thumbnail %}
+	<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/{{ page.thumbnail }}">
+	{% else %}
+	<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/thumbnail.jpg">
+	{% endif %}
 
-<!-- Js -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-<script src="{{ site.baseurl }}/js/bootstrap.min.js"></script>
-<script src="{{ site.baseurl }}/js/owl.carousel.min.js"></script>
-<script src="{{ site.baseurl }}/js/plugins.js"></script>
-<script src="{{ site.baseurl }}/js/min/waypoints.min.js"></script>
-<script src="{{ site.baseurl }}/js/jquery.counterup.js"></script>
+	{% if page.title %}
+	<meta property="og:title" content="{{ site.title }} • {{ page.title }}">
+	{% else %}
+	<meta property="og:title" content="{{ site.title }}">
+	{% endif %}
 
+	<link rel="icon" href="{{ site.baseurl }}/favicon.png" type="image/png">
 
-<script src="{{ site.baseurl }}/js/main.js"></script>
+	<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
-<!--
-/*
- * Airspace
- * Ported to Jekyll by Andrew Lee
- * https://github.com/luminousrubyist/airspace-jekyll
- * Designed and Developed by ThemeFisher
- * https://themefisher.com/
- *
- */
--->
+	<link rel='stylesheet' id='libretto-fonts-css'  href='https://fonts.googleapis.com/css?family=Libre+Baskerville%3A400%2C700%2C400italic%7CPlayfair+Display%3A400%2C700%2C400italic%2C700italic%7CPlayfair+Display+SC%3A700%2C700italic%7CMontserrat%3A400%7CDroid+Sans+Mono%3A400&#038;subset=latin%2Clatin-ext' type='text/css' media='all'>
+
+	<link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+	<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+</head>
